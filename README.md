@@ -17,7 +17,7 @@
 
 **Live Demo:** [https://quantix-os-emfs5mvr6w5orgxmjnsaqy.streamlit.app/]
 
-**Pitch Video:** [Add 5-min video link]
+**Pitch Video:** [https://youtu.be/BmgdGYLdZhk]
 
 ### 1. The Problem
 On RazorpayX, when a bank webhook fails, there is no auto-recovery. Finance teams then spend 18+ hours manually reconciling 1000s of UTRs in Excel. 
