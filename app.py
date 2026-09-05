@@ -5,52 +5,47 @@ import random
 from datetime import datetime
 from engine import run_reconciliation, ai_forecast_revenue, ai_risk_score, process_webhook_secure, get_dlq, get_webhook_logs
 
-st.set_page_config(page_title="Quantix OS x RazorpayX", page_icon="⚡", layout="wide",initial_sidebar_state="expanded")
+st.set_page_config(page_title="Quantix OS x RazorpayX", page_icon="⚡", layout="wide", initial_sidebar_state="expanded")
 
-with st.sidebar:
-    st.title("⚡ QUANTIX")
-    st.text_input("🔍 Search transactions", placeholder="Txn ID, UTR...")
-    st.selectbox("Filter by Status", ["All", "Reconciled", "Pending", "Failed"])
-    
 GROQ_API_KEY = st.secrets.get("GROQ_API_KEY", "")
 
 st.markdown("""
 <style>
 /* Background halka dark */
-.stApp { background-color: #101525 !important; }
-[data-testid="stHeader"] { background-color: #101525 !important; }
+.stApp { background-color: #101525!important; }
+[data-testid="stHeader"] { background-color: #101525!important; }
 
 /* Cards - thode halke taaki text uthe */
-div[data-testid="stMetric"] { 
-    background-color: #1A2035 !important; 
-    border: 1px solid #2A3655 !important;
+div[data-testid="stMetric"] {
+    background-color: #1A2035!important;
+    border: 1px solid #2A3655!important;
     border-radius: 10px;
     padding: 15px;
 }
-div[data-testid="stMetric"] label { color: #8A94B0 !important; font-size: 14px !important; }
-div[data-testid="stMetric"] div { color: #FFFFFF !important; font-weight: 600 !important; }
+div[data-testid="stMetric"] label { color: #8A94B0!important; font-size: 14px!important; }
+div[data-testid="stMetric"] div { color: #FFFFFF!important; font-weight: 600!important; }
 
 /* Charts aur Sidebar */
-div[data-testid="stPlotlyChart"] { background-color: #151B2F !important; border-radius: 10px; }
-[data-testid="stSidebar"] { background-color: #0E1220 !important; }
+div[data-testid="stPlotlyChart"] { background-color: #151B2F!important; border-radius: 10px; }
+[data-testid="stSidebar"] { background-color: #0E1220!important; }
 
 /* Search / Inputs - isse words saaf dikhenge */
-div[data-baseweb="select"] > div { background-color: #1A2035 !important; border: 1px solid #2A3655 !important; }
-div[data-testid="stTextInput"] input { 
-    background-color: #1A2035 !important; 
-    color: white !important; 
-    border: 1px solid #2A3655 !important;
+div[data-baseweb="select"] > div { background-color: #1A2035!important; border: 1px solid #2A3655!important; }
+div[data-testid="stTextInput"] input {
+    background-color: #1A2035!important;
+    color: white!important;
+    border: 1px solid #2A3655!important;
 }
-input { color: white !important; }
+input { color: white!important; }
 
 /* Fork/GitHub hide - FINAL */
-#MainMenu {visibility: hidden !important;}
-footer {visibility: hidden !important;}
-.stDeployButton {display:none !important;}
-[data-testid="stToolbar"] {display: none !important; visibility: hidden !important;}
-[data-testid="stDecoration"] {display: none !important;}
-.viewerBadge_container__1QSob {display: none !important;}
-header {background-color: #101525 !important;}
+#MainMenu {visibility: hidden!important;}
+footer {visibility: hidden!important;}
+.stDeployButton {display:none!important;}
+[data-testid="stToolbar"] {display: none!important; visibility: hidden!important;}
+[data-testid="stDecoration"] {display: none!important;}
+.viewerBadge_container__1QSob {display: none!important;}
+header {background-color: #101525!important;}
 </style>
 """, unsafe_allow_html=True)
 
@@ -97,7 +92,7 @@ if menu == "📊 Dashboard":
     st.header("📊 Reconciliation Dashboard - RazorpayX")
     c1, c2, c3, c4, c5 = st.columns(5)
     total = df_f['gross_amount'].sum()
-    c1.metric("Total Gross", f"Rs {total/100000:.2f} L", "Live")
+    c1.metric("Total Gross", f"Rs {total/100000:.2f} L", "QUANTIX Sync")
     c2.metric("Matched", f"{len(df_matched)}/{len(df_f)}", f"{len(df_matched)/len(df_f)*100:.0f}%")
     c3.metric("Exception", f"{len(df_ex)}", "AI Flagged", delta_color="inverse")
     c4.metric("MDR", f"Rs {df_f['mdr'].sum():,}", "Fee")
@@ -257,7 +252,6 @@ elif menu == "🔔 Webhook Simulator":
         else:
             st.code(f"[10:30:01] POST /webhook/razorpayx -> 200 OK | {bank}\nWaiting for webhook...", language="bash")
 
-        
         if 'last_result' in st.session_state and st.session_state['last_result']:
             res = st.session_state['last_result']
             if res['status']==200 and not res.get('duplicate'):
