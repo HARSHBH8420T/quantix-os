@@ -6,6 +6,12 @@ from datetime import datetime
 from engine import run_reconciliation, ai_forecast_revenue, ai_risk_score, process_webhook_secure, get_dlq, get_webhook_logs
 
 st.set_page_config(page_title="Quantix OS x RazorpayX", page_icon="⚡", layout="wide",initial_sidebar_state="expanded")
+
+with st.sidebar:
+    st.title("⚡ QUANTIX")
+    st.text_input("🔍 Search transactions", placeholder="Txn ID, UTR...")
+    st.selectbox("Filter by Status", ["All", "Reconciled", "Pending", "Failed"])
+    
 GROQ_API_KEY = st.secrets.get("GROQ_API_KEY", "")
 
 st.markdown("""
