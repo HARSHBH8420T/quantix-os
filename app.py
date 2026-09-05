@@ -11,11 +11,18 @@ GROQ_API_KEY = st.secrets.get("GROQ_API_KEY", "")
 
 st.markdown("""
 <style>
-/* Background - THODA LIGHT KIYA */
 .stApp { background-color: #1C233E!important; }
 [data-testid="stHeader"] { background-color: #1C233E!important; }
 
-/* Cards - light */
+/* HEADING WHITE - Ab dikhega saaf */
+h1, h2, h3,.stApp h1,.stApp h2,.stApp h3, div[data-testid="stHeader"] h1 {
+    color: #FFFFFF!important;
+    font-weight: 800!important;
+}
+[data-testid="stSubheader"] { color: #FFFFFF!important; }
+.stApp p { color: #E2E8F0!important; }
+
+/* Cards */
 div[data-testid="stMetric"] {
     background-color: #242E4F!important;
     border: 1px solid #38466E!important;
@@ -25,7 +32,6 @@ div[data-testid="stMetric"] {
 div[data-testid="stMetric"] label { color: #9AA6C3!important; font-size: 14px!important; }
 div[data-testid="stMetric"] div { color: #FFFFFF!important; font-weight: 600!important; }
 
-/* Charts aur Sidebar */
 div[data-testid="stPlotlyChart"] { background-color: #1E2747!important; border-radius: 12px; }
 [data-testid="stSidebar"] { background-color: #151B32!important; }
 
@@ -38,24 +44,21 @@ div[data-testid="stTextInput"] input {
 }
 input { color: white!important; }
 
-/* Fork/GitHub hide */
+/* Hide Fork etc */
 #MainMenu {visibility: hidden!important;}
 footer {visibility: hidden!important;}
 .stDeployButton {display:none!important;}
-[data-testid="stToolbar"] {display: none!important; visibility: hidden!important;}
+[data-testid="stToolbar"] {display: none!important;}
 [data-testid="stDecoration"] {display: none!important;}
 .viewerBadge_container__1QSob {display: none!important;}
 header {background-color: #1C233E!important;}
 
-/* Sidebar ka > button hamesha dikhega - ISKO SABSE NICHE DALA HAI */
+/* Sidebar arrow hamesha dikhega */
 [data-testid="collapsedControl"] {
     display: block!important;
     visibility: visible!important;
     color: white!important;
     background-color: #242E4F!important;
-    border: 1px solid #38466E!important;
-    border-radius: 5px;
-    padding: 2px;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -84,6 +87,7 @@ if 'amount_raw' in df_all.columns:
 
 df = df_all
 
+# --- SIDEBAR - YAHI SE SEARCH BAR AYEGA ---
 with st.sidebar:
     st.title("⚡ QUANTIX OS")
     st.caption("Built for RazorpayX | Hackathon 2026")
@@ -93,7 +97,6 @@ with st.sidebar:
     search = st.text_input("🔍 Search UTR / Merchant / Bank", "", placeholder="e.g. HDFC, SBI, Swiggy")
     df_f = df[df.apply(lambda r: search.lower() in str(r).lower(), axis=1)] if search else df
     st.success(f"✅ {len(df_f[df_f['status']=='Matched'])}/{len(df_f)} Matched (QUANTIX Sync)")
-    st.divider()
     final_groq_key = GROQ_API_KEY
 
 df_matched = df_f[df_f['status']=='Matched']
