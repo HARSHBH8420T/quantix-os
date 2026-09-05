@@ -21,6 +21,8 @@ div[data-testid="stMetric"] label { color: #9AA6C3!important; font-size: 14px!im
 div[data-testid="stMetric"] div { color: #FFFFFF!important; font-weight: 600!important; }
 div[data-testid="stPlotlyChart"] { background-color: #1E2747!important; border-radius: 12px; }
 [data-testid="stSidebar"] { background-color: #151B32!important; }
+
+/* --- INPUT FIX - White on White solved --- */
 div[data-baseweb="select"] > div { background-color: #242E4F!important; color: white!important; border: 1px solid #38466E!important; }
 div[data-baseweb="select"] span, div[data-baseweb="select"] div { color: white!important; fill: white!important; }
 div[data-baseweb="select"] svg { fill: white!important; }
@@ -31,7 +33,7 @@ div[data-testid="stNumberInput"] button { background-color: #242E4F!important; c
 div[data-baseweb="input"] { background-color: #242E4F!important; }
 div[data-baseweb="input"] input { color: white!important; -webkit-text-fill-color: white!important; }
 
-/* ===== ARROW RAHEGA - WHITE BOX + BLACK >> ===== */
+/* ===== ARROW FIX - Teri Photo Wala Gray Dabba Fix ===== */
 [data-testid="collapsedControl"] {
     background-color: #FFFFFF!important;
     width: 44px!important; height: 44px!important;
@@ -59,16 +61,10 @@ div[data-baseweb="input"] input { color: white!important; -webkit-text-fill-colo
     height: 100%!important;
 }
 section[data-testid="stSidebar"] button { color: white!important; }
-
-/* ===== SIRF FORK / GITHUB / MANAGE HATAO - HEADER KO HAATH MAT LAGAO ===== */
 #MainMenu {visibility: hidden!important;}
 footer {visibility: hidden!important;}
 .stDeployButton {display:none!important;}
-[data-testid="stToolbar"] {display: none!important;}
-[data-testid="stDecoration"] {display: none!important;}
-[data-testid="stStatusWidget"] {display: none!important;}
-a[href*="github"] {display: none!important;}
-.viewerBadge_container__1QSob {display: none!important;}
+header {background-color: #1C233E!important;}
 </style>
 """, unsafe_allow_html=True)
 
