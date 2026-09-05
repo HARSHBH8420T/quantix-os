@@ -37,11 +37,14 @@ div[data-testid="stTextInput"] input {
 }
 input { color: white !important; }
 
-/* Fork/GitHub hide */
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-header {visibility: hidden;}
-[data-testid="stToolbar"] {visibility: hidden !important;}
+/* Fork/GitHub hide - FINAL */
+#MainMenu {visibility: hidden !important;}
+footer {visibility: hidden !important;}
+.stDeployButton {display:none !important;}
+[data-testid="stToolbar"] {display: none !important; visibility: hidden !important;}
+[data-testid="stDecoration"] {display: none !important;}
+.viewerBadge_container__1QSob {display: none !important;}
+header {background-color: #101525 !important;}
 </style>
 """, unsafe_allow_html=True)
 
