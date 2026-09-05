@@ -10,17 +10,38 @@ GROQ_API_KEY = st.secrets.get("GROQ_API_KEY", "")
 
 st.markdown("""
 <style>
-.stApp { background-color: #0a0e1a!important; }
-[data-testid="stHeader"] { background-color: #0a0e1a!important; }
-div[data-testid="stMetric"] { background-color: #151A28!important; border: 1px solid #1e2a3a!important; padding: 15px; border-radius: 12px; }
-div[data-testid="stMetric"] label, div[data-testid="stMetric"] div { color: #c0c8d8!important; }
-div[data-testid="stPlotlyChart"] { background-color: #0e1117!important; border-radius: 12px; border: 1px solid #1e232f!important; }
-[data-testid="stSidebar"] { background-color: #0e1117!important; border-right: 1px solid #1e232f; }
-div[data-baseweb="select"] > div { background-color: #151A28!important; color: white!important; border: 1px solid #1e2a3a!important; }
-div[data-baseweb="select"] span { color: white!important; }
-div[data-testid="stTextInput"] input { background-color: #151A28!important; color: white!important; border: 1px solid #1e2a3a!important; }
-div[data-testid="stNumberInput"] input { background-color: #151A28!important; color: white!important; }
-input { background-color: #151A28!important; color: white!important; }
+/* Background halka dark */
+.stApp { background-color: #101525 !important; }
+[data-testid="stHeader"] { background-color: #101525 !important; }
+
+/* Cards - thode halke taaki text uthe */
+div[data-testid="stMetric"] { 
+    background-color: #1A2035 !important; 
+    border: 1px solid #2A3655 !important;
+    border-radius: 10px;
+    padding: 15px;
+}
+div[data-testid="stMetric"] label { color: #8A94B0 !important; font-size: 14px !important; }
+div[data-testid="stMetric"] div { color: #FFFFFF !important; font-weight: 600 !important; }
+
+/* Charts aur Sidebar */
+div[data-testid="stPlotlyChart"] { background-color: #151B2F !important; border-radius: 10px; }
+[data-testid="stSidebar"] { background-color: #0E1220 !important; }
+
+/* Search / Inputs - isse words saaf dikhenge */
+div[data-baseweb="select"] > div { background-color: #1A2035 !important; border: 1px solid #2A3655 !important; }
+div[data-testid="stTextInput"] input { 
+    background-color: #1A2035 !important; 
+    color: white !important; 
+    border: 1px solid #2A3655 !important;
+}
+input { color: white !important; }
+
+/* Fork/GitHub hide */
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+[data-testid="stToolbar"] {visibility: hidden !important;}
 </style>
 """, unsafe_allow_html=True)
 
@@ -56,7 +77,7 @@ with st.sidebar:
     st.divider()
     search = st.text_input("🔍 Search UTR / Merchant / Bank", "", placeholder="e.g. HDFC, SBI, Swiggy")
     df_f = df[df.apply(lambda r: search.lower() in str(r).lower(), axis=1)] if search else df
-    st.success(f"✅ {len(df_f[df_f['status']=='Matched'])}/{len(df_f)} Matched (Live Random)")
+    st.success(f"✅ {len(df_f[df_f['status']=='Matched'])}/{len(df_f)} Matched (QUANTIX Sync)")
     st.divider()
     final_groq_key = GROQ_API_KEY
 
