@@ -6,7 +6,7 @@
 >  ### 📸 Dashboard Preview
 ![Quantix OS Dashboard](dashboard.png)
 
-**Live Demo:** [Add your Streamlit link after deploy]
+**Live Demo:** [https://quantix-os-emfs5mvr6w5orgxmjnsaqy.streamlit.app/]
 
 **Pitch Video:** [Add 5-min video link]
 
