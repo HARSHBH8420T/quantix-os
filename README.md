@@ -6,6 +6,15 @@
 >  ### 📸 Dashboard Preview
 ![Quantix OS Dashboard](dashboard.png)
 
+## 🏗️ Architecture - Final
+![Quantix OS Architecture](Architecture.jpeg)
+
+**Live Metrics from Dashboard:**
+- Total Gross: Rs 17.59L
+- Matched: 50/60 QUANTIX Sync
+- MDR Fee: Rs 35,180 @ 2%
+- Time Saved: 18 Hours
+
 **Live Demo:** [https://quantix-os-emfs5mvr6w5orgxmjnsaqy.streamlit.app/]
 
 **Pitch Video:** [Add 5-min video link]
