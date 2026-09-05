@@ -11,41 +11,52 @@ GROQ_API_KEY = st.secrets.get("GROQ_API_KEY", "")
 
 st.markdown("""
 <style>
-/* Background halka dark */
-.stApp { background-color: #101525!important; }
-[data-testid="stHeader"] { background-color: #101525!important; }
+/* Background - THODA LIGHT KIYA */
+.stApp { background-color: #1C233E!important; }
+[data-testid="stHeader"] { background-color: #1C233E!important; }
 
-/* Cards - thode halke taaki text uthe */
+/* Cards - light */
 div[data-testid="stMetric"] {
-    background-color: #1A2035!important;
-    border: 1px solid #2A3655!important;
-    border-radius: 10px;
+    background-color: #242E4F!important;
+    border: 1px solid #38466E!important;
+    border-radius: 12px;
     padding: 15px;
 }
-div[data-testid="stMetric"] label { color: #8A94B0!important; font-size: 14px!important; }
+div[data-testid="stMetric"] label { color: #9AA6C3!important; font-size: 14px!important; }
 div[data-testid="stMetric"] div { color: #FFFFFF!important; font-weight: 600!important; }
 
 /* Charts aur Sidebar */
-div[data-testid="stPlotlyChart"] { background-color: #151B2F!important; border-radius: 10px; }
-[data-testid="stSidebar"] { background-color: #0E1220!important; }
+div[data-testid="stPlotlyChart"] { background-color: #1E2747!important; border-radius: 12px; }
+[data-testid="stSidebar"] { background-color: #151B32!important; }
 
-/* Search / Inputs - isse words saaf dikhenge */
-div[data-baseweb="select"] > div { background-color: #1A2035!important; border: 1px solid #2A3655!important; }
+/* Inputs */
+div[data-baseweb="select"] > div { background-color: #242E4F!important; border: 1px solid #38466E!important; }
 div[data-testid="stTextInput"] input {
-    background-color: #1A2035!important;
+    background-color: #242E4F!important;
     color: white!important;
-    border: 1px solid #2A3655!important;
+    border: 1px solid #38466E!important;
 }
 input { color: white!important; }
 
-/* Fork/GitHub hide - FINAL */
+/* Fork/GitHub hide */
 #MainMenu {visibility: hidden!important;}
 footer {visibility: hidden!important;}
 .stDeployButton {display:none!important;}
 [data-testid="stToolbar"] {display: none!important; visibility: hidden!important;}
 [data-testid="stDecoration"] {display: none!important;}
 .viewerBadge_container__1QSob {display: none!important;}
-header {background-color: #101525!important;}
+header {background-color: #1C233E!important;}
+
+/* Sidebar ka > button hamesha dikhega - ISKO SABSE NICHE DALA HAI */
+[data-testid="collapsedControl"] {
+    display: block!important;
+    visibility: visible!important;
+    color: white!important;
+    background-color: #242E4F!important;
+    border: 1px solid #38466E!important;
+    border-radius: 5px;
+    padding: 2px;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -251,7 +262,6 @@ elif menu == "🔔 Webhook Simulator":
             st.code("\n".join(logs[-10:]), language="bash")
         else:
             st.code(f"[10:30:01] POST /webhook/razorpayx -> 200 OK | {bank}\nWaiting for webhook...", language="bash")
-
         if 'last_result' in st.session_state and st.session_state['last_result']:
             res = st.session_state['last_result']
             if res['status']==200 and not res.get('duplicate'):
@@ -259,7 +269,6 @@ elif menu == "🔔 Webhook Simulator":
                 mdr = round(gross * 0.02, 2)
                 gst = round(mdr * 0.18, 2)
                 net = res['ai']['net_amount']
-
                 st.success(f"✅ {res['msg']} | Attempts: {res['attempt']} | {res['ai']['action']}")
                 st.info(f"💰 Gross: Rs {gross} | MDR 2%: Rs {mdr} | GST 18%: Rs {gst} | Formula: {gross} - {mdr} - {gst} = Rs {net}")
                 st.metric("✅ FINAL Net Settlement (After Tax)", f"Rs {net}", f"Tax Deducted: Rs {mdr+gst}")
@@ -267,7 +276,6 @@ elif menu == "🔔 Webhook Simulator":
                 st.warning(f"⚠️ {res['msg']} - Idempotency working! No double payment")
             else:
                 st.error(f"💀 {res['msg']}")
-
         st.divider()
         st.subheader("💀 Dead Letter Queue")
         dlq = get_dlq()
