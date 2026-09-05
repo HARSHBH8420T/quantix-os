@@ -3,6 +3,9 @@
 
 > **Tagline:** The AI CFO that never sleeps.
 
+>  ### 📸 Dashboard Preview
+![Quantix OS Dashboard](dashboard.png)
+
 **Live Demo:** [Add your Streamlit link after deploy]
 
 **Pitch Video:** [Add 5-min video link]
