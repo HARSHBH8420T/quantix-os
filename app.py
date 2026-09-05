@@ -14,28 +14,42 @@ st.markdown("""
 .stApp { background-color: #1C233E!important; }
 [data-testid="stHeader"] { background-color: #1C233E!important; }
 h1, h2, h3,.stApp h1,.stApp h2,.stApp h3, div[data-testid="stHeader"] h1 {
-    color: #FFFFFF!important;
-    font-weight: 800!important;
+    color: #FFFFFF!important; font-weight: 800!important;
 }
 [data-testid="stSubheader"] { color: #FFFFFF!important; }
 .stApp p { color: #E2E8F0!important; }
 div[data-testid="stMetric"] {
     background-color: #242E4F!important;
     border: 1px solid #38466E!important;
-    border-radius: 12px;
-    padding: 15px;
+    border-radius: 12px; padding: 15px;
 }
 div[data-testid="stMetric"] label { color: #9AA6C3!important; font-size: 14px!important; }
 div[data-testid="stMetric"] div { color: #FFFFFF!important; font-weight: 600!important; }
 div[data-testid="stPlotlyChart"] { background-color: #1E2747!important; border-radius: 12px; }
 [data-testid="stSidebar"] { background-color: #151B32!important; }
-div[data-baseweb="select"] > div { background-color: #242E4F!important; border: 1px solid #38466E!important; }
-div[data-testid="stTextInput"] input {
+
+/* --- FINAL INPUT FIX - Yahi tera issue tha --- */
+div[data-baseweb="select"] > div { background-color: #242E4F!important; color: white!important; border: 1px solid #38466E!important; }
+div[data-baseweb="select"] span, div[data-baseweb="select"] div { color: white!important; fill: white!important; }
+div[data-baseweb="select"] svg { fill: white!important; }
+ul[data-baseweb="menu"] { background-color: #242E4F!important; }
+ul[data-baseweb="menu"] li { background-color: #242E4F!important; color: white!important; }
+ul[data-baseweb="menu"] li:hover { background-color: #38466E!important; }
+
+div[data-testid="stTextInput"] input, div[data-testid="stNumberInput"] input {
+    background-color: #242E4F!important;
+    color: white!important;
+    border: 1px solid #38466E!important;
+    -webkit-text-fill-color: white!important;
+}
+div[data-testid="stNumberInput"] button {
     background-color: #242E4F!important;
     color: white!important;
     border: 1px solid #38466E!important;
 }
-input { color: white!important; }
+div[data-baseweb="input"] { background-color: #242E4F!important; }
+div[data-baseweb="input"] input { color: white!important; -webkit-text-fill-color: white!important; }
+
 #MainMenu {visibility: hidden!important;}
 footer {visibility: hidden!important;}
 .stDeployButton {display:none!important;}
@@ -43,12 +57,7 @@ footer {visibility: hidden!important;}
 [data-testid="stDecoration"] {display: none!important;}
 .viewerBadge_container__1QSob {display: none!important;}
 header {background-color: #1C233E!important;}
-[data-testid="collapsedControl"] {
-    display: block!important;
-    visibility: visible!important;
-    color: white!important;
-    background-color: #242E4F!important;
-}
+[data-testid="collapsedControl"] { display: block!important; visibility: visible!important; color: white!important; background-color: #242E4F!important; }
 </style>
 """, unsafe_allow_html=True)
 
