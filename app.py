@@ -33,7 +33,7 @@ div[data-testid="stNumberInput"] button { background-color: #242E4F!important; c
 div[data-baseweb="input"] { background-color: #242E4F!important; }
 div[data-baseweb="input"] input { color: white!important; -webkit-text-fill-color: white!important; }
 
-/* ===== ARROW FIX - Teri Photo Wala Gray Dabba Fix ===== */
+/* ===== ARROW FIX - Teri Photo Wala Gray Dabba Fix (Tera Wala As It Is) ===== */
 [data-testid="collapsedControl"] {
     background-color: #FFFFFF!important;
     width: 44px!important; height: 44px!important;
@@ -61,9 +61,18 @@ div[data-baseweb="input"] input { color: white!important; -webkit-text-fill-colo
     height: 100%!important;
 }
 section[data-testid="stSidebar"] button { color: white!important; }
-#MainMenu {visibility: hidden!important;}
-footer {visibility: hidden!important;}
-.stDeployButton {display:none!important;}
+
+/* ===== SIRF FORK / GITHUB HIDE - LOGIC ME KOI CHANGE NAHI ===== */
+#MainMenu {visibility: hidden!important; display: none!important;}
+footer {visibility: hidden!important; display: none!important;}
+.stDeployButton {display:none!important; visibility: hidden!important;}
+[data-testid="stToolbar"] {display: none!important; visibility: hidden!important;}
+[data-testid="stDecoration"] {display: none!important;}
+[data-testid="stStatusWidget"] {display: none!important;}
+header {visibility: hidden!important; height: 0px!important;}
+a[href*="github"] {display: none!important;}
+.viewerBadge_container__1QSob {display: none!important;}
+
 header {background-color: #1C233E!important;}
 </style>
 """, unsafe_allow_html=True)
