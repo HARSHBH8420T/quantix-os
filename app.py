@@ -13,16 +13,12 @@ st.markdown("""
 <style>
 .stApp { background-color: #1C233E!important; }
 [data-testid="stHeader"] { background-color: #1C233E!important; }
-
-/* HEADING WHITE - Ab dikhega saaf */
 h1, h2, h3,.stApp h1,.stApp h2,.stApp h3, div[data-testid="stHeader"] h1 {
     color: #FFFFFF!important;
     font-weight: 800!important;
 }
 [data-testid="stSubheader"] { color: #FFFFFF!important; }
 .stApp p { color: #E2E8F0!important; }
-
-/* Cards */
 div[data-testid="stMetric"] {
     background-color: #242E4F!important;
     border: 1px solid #38466E!important;
@@ -31,11 +27,8 @@ div[data-testid="stMetric"] {
 }
 div[data-testid="stMetric"] label { color: #9AA6C3!important; font-size: 14px!important; }
 div[data-testid="stMetric"] div { color: #FFFFFF!important; font-weight: 600!important; }
-
 div[data-testid="stPlotlyChart"] { background-color: #1E2747!important; border-radius: 12px; }
 [data-testid="stSidebar"] { background-color: #151B32!important; }
-
-/* Inputs */
 div[data-baseweb="select"] > div { background-color: #242E4F!important; border: 1px solid #38466E!important; }
 div[data-testid="stTextInput"] input {
     background-color: #242E4F!important;
@@ -43,8 +36,6 @@ div[data-testid="stTextInput"] input {
     border: 1px solid #38466E!important;
 }
 input { color: white!important; }
-
-/* Hide Fork etc */
 #MainMenu {visibility: hidden!important;}
 footer {visibility: hidden!important;}
 .stDeployButton {display:none!important;}
@@ -52,8 +43,6 @@ footer {visibility: hidden!important;}
 [data-testid="stDecoration"] {display: none!important;}
 .viewerBadge_container__1QSob {display: none!important;}
 header {background-color: #1C233E!important;}
-
-/* Sidebar arrow hamesha dikhega */
 [data-testid="collapsedControl"] {
     display: block!important;
     visibility: visible!important;
@@ -87,7 +76,6 @@ if 'amount_raw' in df_all.columns:
 
 df = df_all
 
-# --- SIDEBAR - YAHI SE SEARCH BAR AYEGA ---
 with st.sidebar:
     st.title("⚡ QUANTIX OS")
     st.caption("Built for RazorpayX | Hackathon 2026")
@@ -118,12 +106,14 @@ if menu == "📊 Dashboard":
     with col1:
         st.subheader("Bank Wise Settlement")
         fig1 = px.bar(df_bar, x='bank', y='gross_amount', color='bank', text_auto=True)
-        fig1.update_layout(template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font_color="white", height=400, showlegend=False)
+        fig1.update_layout(template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font_color="white", height=400, showlegend=False, xaxis=dict(tickfont=dict(color="white")), yaxis=dict(tickfont=dict(color="white")))
+        fig1.update_traces(textfont_color="white")
         st.plotly_chart(fig1, width="stretch")
     with col2:
         st.subheader("Merchant Wise Volume")
         fig2 = px.pie(df_pie, names='merchant', values='gross_amount', hole=0.6)
-        fig2.update_layout(template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font_color="white", height=400)
+        fig2.update_layout(template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font_color="white", height=400, legend=dict(font=dict(color="white", size=14)), font=dict(color="white"))
+        fig2.update_traces(textfont_color="white", textinfo="percent+label", textfont_size=13)
         st.plotly_chart(fig2, width="stretch")
     st.divider()
     st.subheader(f"✅ Reconciled - {len(df_matched)}")
@@ -209,7 +199,7 @@ elif menu == "📈 Forecast":
     c1.metric("Current Revenue", f"Rs {total_rev/100000:.2f} L")
     c2.metric("AI Forecast Next Month", f"Rs {future/100000:.2f} L", f"+{growth/1000:.1f}k")
     fig3 = px.line(df_f, x='date', y='gross_amount', markers=True, template="plotly_dark")
-    fig3.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font_color="white", height=450)
+    fig3.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font_color="white", height=450, xaxis=dict(tickfont=dict(color="white")), yaxis=dict(tickfont=dict(color="white")))
     st.plotly_chart(fig3, width="stretch")
 
 elif menu == "🔔 Webhook Simulator":
