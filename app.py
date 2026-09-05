@@ -5,7 +5,7 @@ import random
 from datetime import datetime
 from engine import run_reconciliation, ai_forecast_revenue, ai_risk_score, process_webhook_secure, get_dlq, get_webhook_logs
 
-st.set_page_config(page_title="Quantix OS x RazorpayX", page_icon="⚡", layout="wide")
+st.set_page_config(page_title="Quantix OS x RazorpayX", page_icon="⚡", layout="wide",initial_sidebar_state="expanded")
 GROQ_API_KEY = st.secrets.get("GROQ_API_KEY", "")
 
 st.markdown("""
